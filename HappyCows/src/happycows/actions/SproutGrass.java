@@ -12,7 +12,7 @@ public class SproutGrass implements Action<Cluster> {
     @Override
     public void perform(final Cluster actor, final TickInfo tick) {
 
-	final Size s = actor.getOfType(Size.class).get();
+	final Size s = actor.getOfTypeOrNull(Size.class);
 
 	final Grass grass = actor.newAgent(Grass.class);
 	grass.associate(Position.randomPosition(s.getWidth(), s.getHeight()));

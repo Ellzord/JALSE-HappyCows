@@ -1,5 +1,6 @@
 package happycows.actions;
 
+import static jalse.attributes.NonAttributeWrapper.unwrap;
 import happycows.agents.Cow;
 import happycows.agents.Grass;
 import happycows.attributes.Position;
@@ -7,19 +8,20 @@ import jalse.Cluster;
 import jalse.TickInfo;
 import jalse.actions.Action;
 
+import java.awt.Point;
+
 public class CowsEatGrass implements Action<Cluster> {
 
     @Override
     public void perform(final Cluster actor, final TickInfo tick) {
 
-	actor.filterAgents(isMarkedAs(Cow.class), Cow.class).forEach(
+	actor.streamAgentsOfType(Cow.class).forEach(
 		cow -> {
 
-		    final Position p = cow.getPosition().get();
+		    final Point pos = unwrap(cow.getPosition());
 
-		    actor.streamAgents().filter(isMarkedAs(Grass.class))
-			    .filter(a -> p.equals(a.getOfType(Position.class).get())).findAny()
-			    .ifPresent(a -> a.kill());
+		    actor.streamAgentsOfType(Grass.class).filter(a -> pos.equals(a.getOfTypeAndUnwrap(Position.class)))
+			    .findAny().ifPresent(a -> a.kill());
 		});
     }
 }

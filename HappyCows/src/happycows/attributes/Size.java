@@ -5,17 +5,17 @@ import jalse.attributes.Attribute;
 public class Size implements Attribute {
 
     private final int width;
-    private final int heigt;
+    private final int height;
 
     public Size(final int width, final int height) {
 
 	this.width = width;
-	heigt = height;
+	this.height = height;
     }
 
     public int getHeight() {
 
-	return heigt;
+	return height;
     }
 
     public int getWidth() {

@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class HappyCows {
 
-    public static final JALSE jalse = new JALSEBuilder(30).setTotalThreads(1).create();
+    public static final JALSE jalse = new JALSEBuilder(10).setTotalThreads(1).create();
 
     public static void main(final String[] args) throws InterruptedException {
 
@@ -51,5 +51,7 @@ public class HappyCows {
 	Thread.sleep(TimeUnit.SECONDS.toMillis(30));
 
 	jalse.stop();
+
+	System.out.println("All the cows have gone to sleep");
     }
 }
