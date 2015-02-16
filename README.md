@@ -21,12 +21,12 @@ HappyCows is a [JALSE](https://github.com/Ellzord/JALSE) example project. It is 
 | Class | Function |
 | ------------- | ------|
 | [GrowGrass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/listeners/GrowGrass.java) | Schedules Grass to be grown (created) when Grass has been eaten (killed). |
-| [Moo](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/listeners/Moo.java) | Outputs the cows Position after it moves. |
+| [Moo](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/listeners/Moo.java) | Outputs the Cows Position after it moves. |
 
 ### [Action](https://github.com/Ellzord/JALSE/blob/master/JALSE/src/jalse/actions/Action.java)s
 
 | Class | Function |
 | ------------- | ------|
 | [CowsEatGrass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/actions/CowsEatGrass.java) | Eats (kills) the Grass at the same Position of each Cow. |
-| [MoveCows](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/actions/MoveCows.java) | Moves the Position of all Cows in random directions. |
+| [MoveCows](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/actions/MoveCows.java) | Moves the Positions of all Cows in random directions. |
 | [SproutGrass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/actions/SproutGrass.java) | Grows (creates) Grass at a random Position. |
