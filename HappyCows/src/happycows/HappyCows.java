@@ -48,7 +48,7 @@ public class HappyCows {
 
 	jalse.tick();
 
-	Thread.sleep(TimeUnit.SECONDS.toMillis(30));
+	Thread.sleep(TimeUnit.SECONDS.toMillis(10));
 
 	jalse.stop();
 
