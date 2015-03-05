@@ -1,11 +1,11 @@
 package happycows.agents;
 
 import happycows.attributes.Position;
-import jalse.agents.Agent;
+import jalse.entities.Entity;
 
 import java.util.Optional;
 
-public interface Cow extends Agent {
+public interface Cow extends Entity {
 
     Optional<Position> getPosition();
 

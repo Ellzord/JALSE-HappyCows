@@ -1,7 +1,7 @@
 package happycows.agents;
 
-import jalse.agents.Agent;
+import jalse.entities.Entity;
 
-public interface Grass extends Agent {
+public interface Grass extends Entity {
 
 }

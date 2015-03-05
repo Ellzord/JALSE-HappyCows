@@ -1,5 +1,6 @@
 package happycows.attributes;
 
+import happycows.HappyCows;
 import jalse.attributes.NonAttributeWrapper;
 
 import java.awt.Point;
@@ -18,10 +19,10 @@ public class Position extends NonAttributeWrapper<Point> {
 	super(position);
     }
 
-    public static Position randomPosition(final int width, final int height) {
+    public static Position randomPosition() {
 
 	final Random rand = ThreadLocalRandom.current();
 
-	return new Position(rand.nextInt(width), rand.nextInt(height));
+	return new Position(rand.nextInt(HappyCows.WIDTH), rand.nextInt(HappyCows.HEIGHT));
     }
 }

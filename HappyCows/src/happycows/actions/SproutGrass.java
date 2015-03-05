@@ -2,20 +2,17 @@ package happycows.actions;
 
 import happycows.agents.Grass;
 import happycows.attributes.Position;
-import happycows.attributes.Size;
-import jalse.Cluster;
-import jalse.TickInfo;
+import jalse.JALSE;
 import jalse.actions.Action;
+import jalse.actions.TickInfo;
 
-public class SproutGrass implements Action<Cluster> {
+public class SproutGrass implements Action<JALSE> {
 
     @Override
-    public void perform(final Cluster actor, final TickInfo tick) {
+    public void perform(final JALSE actor, final TickInfo tick) {
 
-	final Size s = actor.getOfTypeOrNull(Size.class);
-
-	final Grass grass = actor.newAgent(Grass.class);
-	grass.associate(Position.randomPosition(s.getWidth(), s.getHeight()));
+	final Grass grass = actor.newEntity(Grass.class);
+	grass.addAttributeOfType(Position.randomPosition());
 
 	System.out.println(String.format("New grass has sprouted [%s]", grass.getID()));
     }

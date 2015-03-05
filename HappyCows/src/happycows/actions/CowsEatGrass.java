@@ -1,27 +1,25 @@
 package happycows.actions;
 
-import static jalse.attributes.NonAttributeWrapper.unwrap;
 import happycows.agents.Cow;
 import happycows.agents.Grass;
 import happycows.attributes.Position;
-import jalse.Cluster;
-import jalse.TickInfo;
+import jalse.JALSE;
 import jalse.actions.Action;
+import jalse.actions.TickInfo;
+import jalse.entities.Entity;
 
-import java.awt.Point;
-
-public class CowsEatGrass implements Action<Cluster> {
+public class CowsEatGrass implements Action<JALSE> {
 
     @Override
-    public void perform(final Cluster actor, final TickInfo tick) {
+    public void perform(final JALSE actor, final TickInfo tick) {
 
-	actor.streamAgentsOfType(Cow.class).forEach(
+	actor.streamEntitiesOfType(Cow.class).forEach(
 		cow -> {
 
-		    final Point pos = unwrap(cow.getPosition());
+		    final Position pos = cow.getOrNullAttributeOfType(Position.class);
 
-		    actor.streamAgentsOfType(Grass.class).filter(a -> pos.equals(a.getOfTypeAndUnwrap(Position.class)))
-			    .findAny().ifPresent(a -> a.kill());
+		    actor.streamEntitiesOfType(Grass.class)
+			    .filter(a -> pos.equals(a.getOrNullAttributeOfType(Position.class))).forEach(Entity::kill);
 		});
     }
 }

@@ -1,16 +1,16 @@
 package happycows.actions;
 
+import happycows.HappyCows;
 import happycows.agents.Cow;
 import happycows.attributes.Position;
-import happycows.attributes.Size;
-import jalse.Cluster;
-import jalse.TickInfo;
+import jalse.JALSE;
 import jalse.actions.Action;
+import jalse.actions.TickInfo;
 
 import java.awt.Point;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MoveCows implements Action<Cluster> {
+public class MoveCows implements Action<JALSE> {
 
     public enum Direction {
 
@@ -25,13 +25,11 @@ public class MoveCows implements Action<Cluster> {
     }
 
     @Override
-    public void perform(final Cluster actor, final TickInfo tick) {
+    public void perform(final JALSE actor, final TickInfo tick) {
 
-	final Size s = actor.getOfTypeOrNull(Size.class);
+	actor.streamEntitiesOfType(Cow.class).forEach(c -> {
 
-	actor.streamAgentsOfType(Cow.class).forEach(c -> {
-
-	    final Point p = c.getOfTypeAndUnwrap(Position.class);
+	    final Point p = c.getUnwrapAttributeOfType(Position.class);
 	    final Point newP = new Point();
 
 	    switch (Direction.random()) {
@@ -43,12 +41,12 @@ public class MoveCows implements Action<Cluster> {
 
 	    case DOWN:
 
-		newP.setLocation(p.getX(), Math.min(s.getHeight(), p.getY() + 1));
+		newP.setLocation(p.getX(), Math.min(HappyCows.HEIGHT, p.getY() + 1));
 		break;
 
 	    case RIGHT:
 
-		newP.setLocation(Math.min(s.getWidth(), p.getY() + 1), p.getY());
+		newP.setLocation(Math.min(HappyCows.WIDTH, p.getY() + 1), p.getY());
 		break;
 
 	    case LEFT:

@@ -6,42 +6,42 @@ import happycows.actions.MoveCows;
 import happycows.actions.SproutGrass;
 import happycows.agents.Cow;
 import happycows.attributes.Position;
-import happycows.attributes.Size;
 import happycows.listeners.GrowGrass;
 import happycows.listeners.Moo;
-import jalse.Cluster;
 import jalse.JALSE;
 import jalse.JALSEBuilder;
+import jalse.listeners.Listeners;
 
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class HappyCows {
 
-    public static final JALSE jalse = new JALSEBuilder(10).setTotalThreads(1).create();
+    public static final int WIDTH = 4;
+
+    public static final int HEIGHT = 4;
 
     public static void main(final String[] args) throws InterruptedException {
 
-	final Cluster field = jalse.newCluster(UUID.randomUUID());
+	final JALSE jalse = JALSEBuilder.createSingleThreadedJALSE(5);
 
-	System.out.println(String.format("A field is made [%dx%d]", 4, 4));
+	jalse.addEntityListener(new GrowGrass());
+	jalse.scheduleAction(newChain(new CowsEatGrass(), new MoveCows()), 100, 500, TimeUnit.MILLISECONDS);
 
-	field.associate(new Size(4, 4));
-	field.addAgentListener(new GrowGrass());
-	field.addListenerSupplier(Position.class, () -> new Moo());
-	field.schedule(newChain(new CowsEatGrass(), new MoveCows()), 100, 500, TimeUnit.MILLISECONDS);
+	jalse.addEntityListener(Listeners.createAttributeListenerSupplier(Moo::new));
 
-	System.out.println("Planting seeds");
+	System.out.println(String.format("A field is made [%dx%d]", WIDTH, HEIGHT));
 
 	for (int i = 0; i < 8; i++) {
 
-	    field.schedule(new SproutGrass(), 10, TimeUnit.MILLISECONDS);
+	    System.out.println("Planting seeds..");
+
+	    jalse.scheduleAction(new SproutGrass(), 10, TimeUnit.MILLISECONDS);
 	}
 
 	for (int i = 0; i < 4; i++) {
 
-	    final Cow cow = field.newAgent(Cow.class);
-	    cow.setPosition(Position.randomPosition(4, 4));
+	    final Cow cow = jalse.newEntity(Cow.class);
+	    cow.setPosition(Position.randomPosition());
 
 	    System.out.println(String.format("A cow is born [%s]", cow.getID()));
 	}

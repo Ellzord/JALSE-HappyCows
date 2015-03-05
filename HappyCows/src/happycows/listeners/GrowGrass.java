@@ -1,24 +1,26 @@
 package happycows.listeners;
 
-import happycows.HappyCows;
 import happycows.actions.SproutGrass;
 import happycows.agents.Grass;
-import jalse.agents.Agent;
-import jalse.listeners.AgentAdapter;
+import jalse.JALSE;
+import jalse.entities.Entity;
+import jalse.listeners.EntityAdapter;
+import jalse.listeners.EntityEvent;
 
 import java.util.concurrent.TimeUnit;
 
-public class GrowGrass extends AgentAdapter {
+public class GrowGrass extends EntityAdapter {
 
     @Override
-    public void agentKilled(final Agent a) {
+    public void entityKilled(final EntityEvent event) {
 
-	if (a.isMarkedAsType(Grass.class)) {
+	final Entity e = event.getEntity();
 
-	    System.out.println(String.format("Grass has been eaten [%s]", a.getID()));
+	if (e.isMarkedAsType(Grass.class)) {
 
-	    HappyCows.jalse.streamClusters().findAny()
-		    .ifPresent(field -> field.schedule(new SproutGrass(), 300, TimeUnit.MILLISECONDS));
+	    System.out.println(String.format("Grass has been eaten [%s]", e.getID()));
+
+	    ((JALSE) event.getContainer()).scheduleAction(new SproutGrass(), 300, TimeUnit.MILLISECONDS);
 	}
     }
 }
