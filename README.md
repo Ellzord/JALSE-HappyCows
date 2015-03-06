@@ -14,7 +14,6 @@ HappyCows is a [JALSE](https://github.com/Ellzord/JALSE) example project. It is 
 | Class | Function |
 | ------------- | ------|
 | [Position](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/attributes/Position.java) | A [NonAttributeWrapper](https://github.com/Ellzord/JALSE/blob/master/JALSE/src/jalse/attributes/NonAttributeWrapper.java) for [Point](http://docs.oracle.com/javase/8/docs/api/java/awt/Point.html) used as a position within the field. |
-| [Size](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/attributes/Size.java) | Used to determine the dimensions of the field. |
 
 ### Listeners
 
