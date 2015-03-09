@@ -13,13 +13,14 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MoveCows implements Action<JALSE> {
 
     public enum Direction {
-	
+
 	DOWN, LEFT, RIGHT, UP;
 
 	public static Direction random() {
 	    final Direction[] dirs = values();
 	    return dirs[ThreadLocalRandom.current().nextInt(dirs.length)];
 	}
+
     }
 
     @Override
