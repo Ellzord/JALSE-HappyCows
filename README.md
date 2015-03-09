@@ -2,12 +2,12 @@
 
 HappyCows is a [JALSE](https://github.com/Ellzord/JALSE) example project. It is a small simulation of cows in a field that randomly move and eat grass (which grows back over time). Below there are details about each of the classes and their function within the example (see the [Wiki](https://github.com/Ellzord/JALSE/wiki) for more information).
 
-### Agents
+### Entities
 
 | Class | Function |
 | ------------- | ------|
-| [Cow](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/agents/Cow.java) | Used to identify the cows. |
-| [Grass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/agents/Grass.java) | Used to identify the grass. |
+| [Cow](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/entities/Cow.java) | Used to identify the cows. |
+| [Grass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/entities/Grass.java) | Used to identify the grass. |
 
 ### Attributes
 
