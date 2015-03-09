@@ -13,14 +13,11 @@ public class GrowGrass extends EntityAdapter {
 
     @Override
     public void entityKilled(final EntityEvent event) {
-
 	final Entity e = event.getEntity();
-
 	if (e.isMarkedAsType(Grass.class)) {
-
 	    System.out.println(String.format("Grass has been eaten [%s]", e.getID()));
-
 	    ((JALSE) event.getContainer()).scheduleAction(new SproutGrass(), 300, TimeUnit.MILLISECONDS);
 	}
     }
+
 }

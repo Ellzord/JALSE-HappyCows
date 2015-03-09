@@ -12,14 +12,12 @@ public class CowsEatGrass implements Action<JALSE> {
 
     @Override
     public void perform(final JALSE actor, final TickInfo tick) {
-
 	actor.streamEntitiesOfType(Cow.class).forEach(
 		cow -> {
-
 		    final Position pos = cow.getOrNullAttributeOfType(Position.class);
-
 		    actor.streamEntitiesOfType(Grass.class)
 			    .filter(a -> pos.equals(a.getOrNullAttributeOfType(Position.class))).forEach(Entity::kill);
 		});
     }
+
 }
