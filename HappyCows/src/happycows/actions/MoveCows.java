@@ -1,8 +1,8 @@
 package happycows.actions;
 
 import happycows.HappyCows;
-import happycows.agents.Cow;
 import happycows.attributes.Position;
+import happycows.entities.Cow;
 import jalse.JALSE;
 import jalse.actions.Action;
 import jalse.actions.TickInfo;

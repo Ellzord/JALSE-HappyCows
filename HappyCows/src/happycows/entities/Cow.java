@@ -1,4 +1,4 @@
-package happycows.agents;
+package happycows.entities;
 
 import happycows.attributes.Position;
 import jalse.entities.Entity;

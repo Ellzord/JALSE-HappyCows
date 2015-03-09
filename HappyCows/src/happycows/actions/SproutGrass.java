@@ -1,7 +1,7 @@
 package happycows.actions;
 
-import happycows.agents.Grass;
 import happycows.attributes.Position;
+import happycows.entities.Grass;
 import jalse.JALSE;
 import jalse.actions.Action;
 import jalse.actions.TickInfo;
