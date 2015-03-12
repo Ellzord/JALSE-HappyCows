@@ -21,7 +21,7 @@ public class HappyCows {
     public static final int HEIGHT = 4;
 
     public static void main(final String[] args) throws InterruptedException {
-	final JALSE jalse = JALSEBuilder.createSingleThreadedJALSE(5);
+	final JALSE jalse = JALSEBuilder.buildSingleThreadedJALSE(5);
 
 	jalse.addEntityListener(new GrowGrass());
 	jalse.scheduleAction(newChain(new CowsEatGrass(), new MoveCows()), 100, 500, TimeUnit.MILLISECONDS);
@@ -46,5 +46,4 @@ public class HappyCows {
 
 	System.out.println("All the cows have gone to sleep");
     }
-
 }

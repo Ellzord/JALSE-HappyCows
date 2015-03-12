@@ -5,7 +5,7 @@ import happycows.attributes.Position;
 import happycows.entities.Cow;
 import jalse.JALSE;
 import jalse.actions.Action;
-import jalse.actions.TickInfo;
+import jalse.misc.Engine.TickInfo;
 
 import java.awt.Point;
 import java.util.concurrent.ThreadLocalRandom;
@@ -50,5 +50,4 @@ public class MoveCows implements Action<JALSE> {
 	    }
 	});
     }
-
 }

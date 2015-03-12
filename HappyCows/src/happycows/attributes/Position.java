@@ -21,5 +21,4 @@ public class Position extends NonAttributeWrapper<Point> {
     public Position(final Point position) {
 	super(position);
     }
-
 }

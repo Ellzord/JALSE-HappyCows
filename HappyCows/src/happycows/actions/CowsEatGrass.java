@@ -5,8 +5,8 @@ import happycows.entities.Cow;
 import happycows.entities.Grass;
 import jalse.JALSE;
 import jalse.actions.Action;
-import jalse.actions.TickInfo;
 import jalse.entities.Entity;
+import jalse.misc.Engine.TickInfo;
 
 public class CowsEatGrass implements Action<JALSE> {
 
@@ -19,5 +19,4 @@ public class CowsEatGrass implements Action<JALSE> {
 			    .filter(a -> pos.equals(a.getOrNullAttributeOfType(Position.class))).forEach(Entity::kill);
 		});
     }
-
 }

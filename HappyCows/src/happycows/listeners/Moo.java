@@ -13,5 +13,4 @@ public class Moo extends AttributeAdapter<Position> {
 	final Point p = event.getAttribute().unwrap();
 	System.out.println(String.format("Cow mooing [%d:%d]", p.x, p.y));
     }
-
 }

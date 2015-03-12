@@ -4,7 +4,7 @@ import happycows.attributes.Position;
 import happycows.entities.Grass;
 import jalse.JALSE;
 import jalse.actions.Action;
-import jalse.actions.TickInfo;
+import jalse.misc.Engine.TickInfo;
 
 public class SproutGrass implements Action<JALSE> {
 
@@ -14,5 +14,4 @@ public class SproutGrass implements Action<JALSE> {
 	grass.addAttributeOfType(Position.randomPosition());
 	System.out.println(String.format("New grass has sprouted [%s]", grass.getID()));
     }
-
 }

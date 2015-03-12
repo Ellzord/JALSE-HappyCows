@@ -19,5 +19,4 @@ public class GrowGrass extends EntityAdapter {
 	    ((JALSE) event.getContainer()).scheduleAction(new SproutGrass(), 300, TimeUnit.MILLISECONDS);
 	}
     }
-
 }

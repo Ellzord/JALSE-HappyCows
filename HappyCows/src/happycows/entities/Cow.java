@@ -10,5 +10,4 @@ public interface Cow extends Entity {
     Optional<Position> getPosition();
 
     void setPosition(Position p);
-
 }
