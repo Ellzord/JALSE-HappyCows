@@ -1,6 +1,6 @@
 package happycows;
 
-import static jalse.actions.ActionChain.newChain;
+import static jalse.engine.actions.ActionChain.newChain;
 import happycows.actions.CowsEatGrass;
 import happycows.actions.MoveCows;
 import happycows.actions.SproutGrass;
