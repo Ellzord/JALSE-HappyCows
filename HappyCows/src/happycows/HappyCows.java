@@ -1,6 +1,6 @@
 package happycows;
 
-import static jalse.engine.actions.ActionChain.newChain;
+import static jalse.actions.MultiActionBuilder.buildChain;
 import happycows.actions.CowsEatGrass;
 import happycows.actions.MoveCows;
 import happycows.actions.SproutGrass;
@@ -21,17 +21,17 @@ public class HappyCows {
     public static final int HEIGHT = 4;
 
     public static void main(final String[] args) throws InterruptedException {
-	final JALSE jalse = JALSEBuilder.buildSingleThreadedJALSE(5);
+	final JALSE jalse = JALSEBuilder.buildSingleThreadedJALSE();
 
 	jalse.addEntityListener(new GrowGrass());
-	jalse.scheduleAction(newChain(new CowsEatGrass(), new MoveCows()), 100, 500, TimeUnit.MILLISECONDS);
+	jalse.scheduleForActor(buildChain(new CowsEatGrass(), new MoveCows()), 200, 500, TimeUnit.MILLISECONDS);
 	jalse.addEntityListener(Listeners.createAttributeListenerSupplier(Moo::new));
 
 	System.out.println(String.format("A field is made [%dx%d]", WIDTH, HEIGHT));
 
 	for (int i = 0; i < 8; i++) {
 	    System.out.println("Planting seeds..");
-	    jalse.scheduleAction(new SproutGrass(), 10, TimeUnit.MILLISECONDS);
+	    jalse.scheduleForActor(new SproutGrass());
 	}
 
 	for (int i = 0; i < 4; i++) {
@@ -40,7 +40,6 @@ public class HappyCows {
 	    System.out.println(String.format("A cow is born [%s]", cow.getID()));
 	}
 
-	jalse.tick();
 	Thread.sleep(TimeUnit.SECONDS.toMillis(10));
 	jalse.stop();
 

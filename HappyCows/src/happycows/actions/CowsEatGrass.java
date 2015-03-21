@@ -4,15 +4,15 @@ import happycows.attributes.Position;
 import happycows.entities.Cow;
 import happycows.entities.Grass;
 import jalse.JALSE;
-import jalse.engine.actions.Action;
-import jalse.engine.actions.ActionContext;
+import jalse.actions.Action;
+import jalse.actions.ActionContext;
 import jalse.entities.Entity;
 
 public class CowsEatGrass implements Action<JALSE> {
 
     @Override
     public void perform(final ActionContext<JALSE> tick) {
-	final JALSE actor = tick.getActor();
+	final JALSE actor = tick.getOrNullActor();
 	actor.streamEntitiesOfType(Cow.class).forEach(
 		cow -> {
 		    final Position pos = cow.getPosition().get();
