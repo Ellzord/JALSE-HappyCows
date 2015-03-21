@@ -15,7 +15,7 @@ public class CowsEatGrass implements Action<JALSE> {
 	final JALSE actor = tick.getOrNullActor();
 	actor.streamEntitiesOfType(Cow.class).forEach(
 		cow -> {
-		    final Position pos = cow.getPosition().get();
+		    final Position pos = cow.getPosition();
 		    actor.streamEntitiesOfType(Grass.class)
 			    .filter(a -> pos.equals(a.getOrNullAttributeOfType(Position.class))).forEach(Entity::kill);
 		});
