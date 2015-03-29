@@ -1,6 +1,5 @@
 package happycows.actions;
 
-import static jalse.attributes.Attributes.newType;
 import happycows.HappyCows;
 import happycows.entities.Cow;
 import jalse.JALSE;
@@ -46,7 +45,7 @@ public class MoveCows implements Action<JALSE> {
 
 	    if (!p.equals(newP)) {
 		p.setLocation(newP);
-		c.fireAttributeChanged(newType("position", Point.class));
+		c.fireAttributeChanged("position");
 	    }
 	});
     }

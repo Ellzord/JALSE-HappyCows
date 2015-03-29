@@ -20,7 +20,7 @@ public class SproutGrass implements Action<JALSE> {
     @Override
     public void perform(final ActionContext<JALSE> context) {
 	final Grass grass = context.getOrNullActor().newEntity(Grass.class);
-	grass.addAttributeOfType("position", Point.class, randomPosition());
+	grass.addAttributeOfType("position", randomPosition());
 	System.out.println(String.format("New grass has sprouted [%s]", grass.getID()));
     }
 }
