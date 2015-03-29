@@ -4,7 +4,6 @@ import static jalse.actions.MultiActionBuilder.buildChain;
 import happycows.actions.CowsEatGrass;
 import happycows.actions.MoveCows;
 import happycows.actions.SproutGrass;
-import happycows.attributes.Position;
 import happycows.entities.Cow;
 import happycows.listeners.GrowGrass;
 import happycows.listeners.Moo;
@@ -12,6 +11,7 @@ import jalse.JALSE;
 import jalse.JALSEBuilder;
 import jalse.listeners.Listeners;
 
+import java.awt.Point;
 import java.util.concurrent.TimeUnit;
 
 public class HappyCows {
@@ -25,7 +25,7 @@ public class HappyCows {
 
 	jalse.addEntityListener(new GrowGrass());
 	jalse.scheduleForActor(buildChain(new CowsEatGrass(), new MoveCows()), 200, 500, TimeUnit.MILLISECONDS);
-	jalse.addEntityListener(Listeners.createAttributeListenerSupplier(Moo::new));
+	jalse.addEntityListener(Listeners.createAttributeListenerSupplier("position", Point.class, Moo::new));
 
 	System.out.println(String.format("A field is made [%dx%d]", WIDTH, HEIGHT));
 
@@ -36,7 +36,7 @@ public class HappyCows {
 
 	for (int i = 0; i < 4; i++) {
 	    final Cow cow = jalse.newEntity(Cow.class);
-	    cow.setPosition(Position.randomPosition());
+	    cow.setPosition(new Point(1, 1));
 	    System.out.println(String.format("A cow is born [%s]", cow.getID()));
 	}
 

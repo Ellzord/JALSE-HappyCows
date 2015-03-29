@@ -1,12 +1,13 @@
 package happycows.actions;
 
-import happycows.attributes.Position;
 import happycows.entities.Cow;
 import happycows.entities.Grass;
 import jalse.JALSE;
 import jalse.actions.Action;
 import jalse.actions.ActionContext;
 import jalse.entities.Entity;
+
+import java.awt.Point;
 
 public class CowsEatGrass implements Action<JALSE> {
 
@@ -15,9 +16,10 @@ public class CowsEatGrass implements Action<JALSE> {
 	final JALSE actor = tick.getOrNullActor();
 	actor.streamEntitiesOfType(Cow.class).forEach(
 		cow -> {
-		    final Position pos = cow.getPosition();
+		    final Point pos = cow.getPosition();
 		    actor.streamEntitiesOfType(Grass.class)
-			    .filter(a -> pos.equals(a.getOrNullAttributeOfType(Position.class))).forEach(Entity::kill);
+			    .filter(a -> pos.equals(a.getOrNullAttributeOfType("position", Point.class)))
+			    .forEach(Entity::kill);
 		});
     }
 }

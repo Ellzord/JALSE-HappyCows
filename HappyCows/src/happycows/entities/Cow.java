@@ -1,15 +1,16 @@
 package happycows.entities;
 
-import happycows.attributes.Position;
 import jalse.entities.Entity;
 import jalse.entities.annotations.GetAttribute;
 import jalse.entities.annotations.SetAttribute;
 
+import java.awt.Point;
+
 public interface Cow extends Entity {
 
-    @GetAttribute
-    Position getPosition();
+    @GetAttribute("position")
+    Point getPosition();
 
-    @SetAttribute
-    void setPosition(Position p);
+    @SetAttribute("position")
+    void setPosition(Point p);
 }

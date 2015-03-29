@@ -1,7 +1,7 @@
 package happycows.actions;
 
+import static jalse.attributes.Attributes.newType;
 import happycows.HappyCows;
-import happycows.attributes.Position;
 import happycows.entities.Cow;
 import jalse.JALSE;
 import jalse.actions.Action;
@@ -26,7 +26,7 @@ public class MoveCows implements Action<JALSE> {
     public void perform(final ActionContext<JALSE> context) {
 	final JALSE actor = context.getOrNullActor();
 	actor.streamEntitiesOfType(Cow.class).forEach(c -> {
-	    final Point p = c.getUnwrapAttributeOfType(Position.class);
+	    final Point p = c.getPosition();
 	    final Point newP = new Point();
 
 	    switch (Direction.random()) {
@@ -46,7 +46,7 @@ public class MoveCows implements Action<JALSE> {
 
 	    if (!p.equals(newP)) {
 		p.setLocation(newP);
-		c.fireAttributeChanged(Position.class);
+		c.fireAttributeChanged(newType("position", Point.class));
 	    }
 	});
     }
