@@ -1,6 +1,8 @@
 package happycows;
 
 import static jalse.actions.MultiActionBuilder.buildChain;
+import static jalse.attributes.Attributes.newTypeOf;
+import static jalse.listeners.Listeners.newAttributeListenerSupplier;
 import happycows.actions.CowsEatGrass;
 import happycows.actions.MoveCows;
 import happycows.actions.SproutGrass;
@@ -9,7 +11,6 @@ import happycows.listeners.GrowGrass;
 import happycows.listeners.Moo;
 import jalse.JALSE;
 import jalse.JALSEBuilder;
-import jalse.listeners.Listeners;
 
 import java.awt.Point;
 import java.util.concurrent.TimeUnit;
@@ -25,7 +26,7 @@ public class HappyCows {
 
 	jalse.addEntityListener(new GrowGrass());
 	jalse.scheduleForActor(buildChain(new CowsEatGrass(), new MoveCows()), 200, 500, TimeUnit.MILLISECONDS);
-	jalse.addEntityListener(Listeners.createAttributeListenerSupplier("position", Point.class, Moo::new));
+	jalse.addEntityListener(newAttributeListenerSupplier("position", newTypeOf(Point.class), Moo::new));
 
 	System.out.println(String.format("A field is made [%dx%d]", WIDTH, HEIGHT));
 

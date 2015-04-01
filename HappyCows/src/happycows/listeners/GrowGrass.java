@@ -16,7 +16,6 @@ public class GrowGrass extends EntityAdapter {
 	final Entity e = event.getEntity();
 	if (e.isMarkedAsType(Grass.class)) {
 	    System.out.println(String.format("Grass has been eaten [%s]", e.getID()));
-
 	    ((JALSE) event.getContainer()).scheduleForActor(new SproutGrass(), 300, TimeUnit.MILLISECONDS);
 	}
     }

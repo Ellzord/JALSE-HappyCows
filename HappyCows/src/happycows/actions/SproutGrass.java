@@ -1,5 +1,6 @@
 package happycows.actions;
 
+import static jalse.attributes.Attributes.newTypeOf;
 import happycows.HappyCows;
 import happycows.entities.Grass;
 import jalse.JALSE;
@@ -19,8 +20,8 @@ public class SproutGrass implements Action<JALSE> {
 
     @Override
     public void perform(final ActionContext<JALSE> context) {
-	final Grass grass = context.getOrNullActor().newEntity(Grass.class);
-	grass.addAttributeOfType("position", randomPosition());
+	final Grass grass = context.getActor().newEntity(Grass.class);
+	grass.addAttributeOfType("position", newTypeOf(Point.class), randomPosition());
 	System.out.println(String.format("New grass has sprouted [%s]", grass.getID()));
     }
 }
