@@ -1,5 +1,4 @@
 ## HappyCows
-
 HappyCows is a [JALSE](https://github.com/Ellzord/JALSE) example project. It is a small simulation of cows in a field that randomly move and eat grass (which grows back over time).
 
 ### Simulation life-cycle
