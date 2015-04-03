@@ -1,31 +1,19 @@
 ## HappyCows
 
-HappyCows is a [JALSE](https://github.com/Ellzord/JALSE) example project. It is a small simulation of cows in a field that randomly move and eat grass (which grows back over time). Below there are details about each of the classes and their function within the example (see the [Wiki](https://github.com/Ellzord/JALSE/wiki) for more information).
+HappyCows is a [JALSE](https://github.com/Ellzord/JALSE) example project. It is a small simulation of cows in a field that randomly move and eat grass (which grows back over time).
 
-### Entities
+### Simulation life-cycle
+1. [Grass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/entities/Grass.java) seeds are sown.
+2. [Cow](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/entities/Cow.java)s are birthed.
+3. An [Action](https://github.com/Ellzord/JALSE/blob/master/HappyCows/src/jalse/actions/Action.java) chain is built from [CowsEatGrass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/actions/CowsEatGrass.java) and  [MoveCows](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/actions/MoveCows.java) causing the cows to eat any grass at their current position and then move (much as cows do in real life).
+4. Eating Grass causes [GrowGrass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/listeners/GrowGrass.java) to fire sowing another seed.
+5. Repeat from 3.
 
-| Class | Function |
-| ------------- | ------|
-| [Cow](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/entities/Cow.java) | Used to identify the cows. |
-| [Grass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/entities/Grass.java) | Used to identify the grass. |
+### Model key
+![GitHub Logo](/model-key.png)
 
-### Attributes
+### Model
+![GitHub Logo](/happycows-model.png)
 
-| Class | Function |
-| ------------- | ------|
-| [Position](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/attributes/Position.java) | A [NonAttributeWrapper](https://github.com/Ellzord/JALSE/blob/master/JALSE/src/jalse/attributes/NonAttributeWrapper.java) for [Point](http://docs.oracle.com/javase/8/docs/api/java/awt/Point.html) used as a position within the field. |
-
-### Listeners
-
-| Class | Function |
-| ------------- | ------|
-| [GrowGrass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/listeners/GrowGrass.java) | Schedules Grass to be grown (created) when Grass has been eaten (killed). |
-| [Moo](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/listeners/Moo.java) | Outputs the Cows Position after it moves. |
-
-### Actions
-
-| Class | Function |
-| ------------- | ------|
-| [CowsEatGrass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/actions/CowsEatGrass.java) | Eats (kills) the Grass at the same Position of each Cow. |
-| [MoveCows](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/actions/MoveCows.java) | Moves the Positions of all Cows in random directions. |
-| [SproutGrass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/HappyCows/src/happycows/actions/SproutGrass.java) | Grows (creates) Grass at a random Position. |
+### More
+See the [Wiki](https://github.com/Ellzord/JALSE/wiki) for more information.
