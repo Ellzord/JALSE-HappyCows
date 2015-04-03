@@ -1,18 +1,17 @@
 package happycows;
 
 import static jalse.actions.MultiActionBuilder.buildChain;
-import static jalse.attributes.Attributes.newTypeOf;
-import static jalse.listeners.Listeners.newAttributeListenerSupplier;
 import happycows.actions.CowsEatGrass;
 import happycows.actions.MoveCows;
 import happycows.actions.SproutGrass;
 import happycows.entities.Cow;
 import happycows.listeners.GrowGrass;
-import happycows.listeners.Moo;
 import jalse.JALSE;
 import jalse.JALSEBuilder;
 
 import java.awt.Point;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class HappyCows {
@@ -21,29 +20,48 @@ public class HappyCows {
 
     public static final int HEIGHT = 4;
 
+    public static final int COWS = 4;
+
+    public static final int GRASS = 8;
+
     public static void main(final String[] args) throws InterruptedException {
+	// Create a single threaded parent container.
 	final JALSE jalse = JALSEBuilder.buildSingleThreadedJALSE();
 
+	System.out.println(String.format("Creating a field [%dx%d]", WIDTH, HEIGHT));
+
+	// Listen for grass being eaten
 	jalse.addEntityListener(new GrowGrass());
+	// Schedule grass to be eaten and cows to be moved.
 	jalse.scheduleForActor(buildChain(new CowsEatGrass(), new MoveCows()), 200, 500, TimeUnit.MILLISECONDS);
-	jalse.addEntityListener(newAttributeListenerSupplier("position", newTypeOf(Point.class), Moo::new));
 
-	System.out.println(String.format("A field is made [%dx%d]", WIDTH, HEIGHT));
+	System.out.println(String.format("Planting %d seeds..", GRASS));
 
-	for (int i = 0; i < 8; i++) {
-	    System.out.println("Planting seeds..");
+	for (int i = 0; i < GRASS; i++) {
+	    // Schedule grass to be created
 	    jalse.scheduleForActor(new SproutGrass());
 	}
 
-	for (int i = 0; i < 4; i++) {
+	System.out.println(String.format("Birthing %d cows..", COWS));
+
+	for (int i = 0; i < COWS; i++) {
+	    // Create a new entity marked as a cow
 	    final Cow cow = jalse.newEntity(Cow.class);
-	    cow.setPosition(new Point(1, 1));
+	    // Place randomly in the field
+	    cow.setPosition(randomPosition());
 	    System.out.println(String.format("A cow is born [%s]", cow.getID()));
 	}
 
+	// Sleep for 10 seconds to allow life to exist
 	Thread.sleep(TimeUnit.SECONDS.toMillis(10));
+	// Cancel all actions.
 	jalse.stop();
 
 	System.out.println("All the cows have gone to sleep");
+    }
+
+    public static Point randomPosition() {
+	final Random rand = ThreadLocalRandom.current();
+	return new Point(rand.nextInt(HappyCows.WIDTH), rand.nextInt(HappyCows.HEIGHT));
     }
 }

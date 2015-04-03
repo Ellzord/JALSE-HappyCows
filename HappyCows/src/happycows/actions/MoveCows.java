@@ -24,30 +24,36 @@ public class MoveCows implements Action<JALSE> {
 
     @Override
     public void perform(final ActionContext<JALSE> context) {
-	final JALSE actor = context.getActor();
-	actor.streamEntitiesOfType(Cow.class).forEach(c -> {
-	    final Point p = c.getPosition();
-	    final Point newP = new Point();
+	// Get the actor this action is for
+	final JALSE jalse = context.getActor();
 
-	    switch (Direction.random()) {
-	    case UP:
-		newP.setLocation(p.getX(), Math.max(0, p.getY() - 1));
-		break;
-	    case DOWN:
-		newP.setLocation(p.getX(), Math.min(HappyCows.HEIGHT, p.getY() + 1));
-		break;
-	    case RIGHT:
-		newP.setLocation(Math.min(HappyCows.WIDTH, p.getY() + 1), p.getY());
-		break;
-	    case LEFT:
-		newP.setLocation(Math.max(0, p.getX() - 1), p.getY());
-		break;
-	    }
+	// Only process cows
+	jalse.streamEntitiesOfType(Cow.class).forEach(c -> {
+	    final Point oldPos = c.getPosition();
+	    final Point newPos = new Point();
 
-	    if (!p.equals(newP)) {
-		p.setLocation(newP);
-		c.fireAttributeChanged("position", newTypeOf(Point.class));
-	    }
-	});
+	    // Calculate the new position for a random direction
+		switch (Direction.random()) {
+		case UP:
+		    newPos.setLocation(oldPos.getX(), Math.max(0, oldPos.getY() - 1));
+		    break;
+		case DOWN:
+		    newPos.setLocation(oldPos.getX(), Math.min(HappyCows.HEIGHT, oldPos.getY() + 1));
+		    break;
+		case RIGHT:
+		    newPos.setLocation(Math.min(HappyCows.WIDTH, oldPos.getY() + 1), oldPos.getY());
+		    break;
+		case LEFT:
+		    newPos.setLocation(Math.max(0, oldPos.getX() - 1), oldPos.getY());
+		    break;
+		}
+
+		// If the position could be moved
+		if (!oldPos.equals(newPos)) {
+		    oldPos.setLocation(newPos);
+		    // Signal the internal state of the position has changed
+		    c.fireAttributeChanged("position", newTypeOf(Point.class));
+		}
+	    });
     }
 }

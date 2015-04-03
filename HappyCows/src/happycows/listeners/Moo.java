@@ -9,6 +9,7 @@ public class Moo extends AttributeAdapter<Point> {
 
     @Override
     public void attributeChanged(final AttributeEvent<Point> event) {
+	// Get the new position
 	final Point p = event.getValue();
 	System.out.println(String.format("Cow mooing [%d:%d]", p.x, p.y));
     }
