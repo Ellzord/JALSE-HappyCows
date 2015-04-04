@@ -1,13 +1,16 @@
 package happycows;
 
 import static jalse.actions.MultiActionBuilder.buildChain;
+import static jalse.attributes.Attributes.newNamedTypeOf;
 import happycows.actions.CowsEatGrass;
 import happycows.actions.MoveCows;
 import happycows.actions.SproutGrass;
 import happycows.entities.Cow;
 import happycows.listeners.GrowGrass;
+import happycows.listeners.Moo;
 import jalse.JALSE;
 import jalse.JALSEBuilder;
+import jalse.attributes.NamedAttributeType;
 
 import java.awt.Point;
 import java.util.Random;
@@ -44,11 +47,17 @@ public class HappyCows {
 
 	System.out.println(String.format("Birthing %d cows..", COWS));
 
+	// Create the type.
+	final NamedAttributeType<Point> posType = newNamedTypeOf("position", Point.class);
+
 	for (int i = 0; i < COWS; i++) {
 	    // Create a new entity marked as a cow
 	    final Cow cow = jalse.newEntity(Cow.class);
 	    // Place randomly in the field
 	    cow.setPosition(randomPosition());
+	    // Moo when it moves
+	    cow.addAttributeListener(posType, new Moo());
+
 	    System.out.println(String.format("A cow is born [%s]", cow.getID()));
 	}
 
