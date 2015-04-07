@@ -15,7 +15,7 @@ HappyCows is a [JALSE](https://github.com/Ellzord/JALSE) example project. It is 
 ![Model](happycows-model.png)
 
 ### Output
-see [output.txt](output.txt).
+see [output.txt](output.txt)!
 
 ### More
 See the [Wiki](https://github.com/Ellzord/JALSE/wiki) for more information.
