@@ -9,10 +9,13 @@ HappyCows is a [JALSE](https://github.com/Ellzord/JALSE) example project. It is 
 5. Repeat from 3.
 
 ### Model key
-![Model key](/model-key.png)
+![Model key](model-key.png)
 
 ### Model
-![Model](/happycows-model.png)
+![Model](happycows-model.png)
+
+### Output
+see [output.txt](output.txt).
 
 ### More
 See the [Wiki](https://github.com/Ellzord/JALSE/wiki) for more information.
