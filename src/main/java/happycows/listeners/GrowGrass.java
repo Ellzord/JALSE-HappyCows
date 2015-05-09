@@ -4,12 +4,12 @@ import happycows.actions.SproutGrass;
 import happycows.entities.Grass;
 import jalse.JALSE;
 import jalse.entities.Entity;
-import jalse.listeners.EntityAdapter;
+import jalse.listeners.EntityListener;
 import jalse.listeners.EntityEvent;
 
 import java.util.concurrent.TimeUnit;
 
-public class GrowGrass extends EntityAdapter {
+public class GrowGrass implements EntityListener {
 
     @Override
     public void entityKilled(final EntityEvent event) {
