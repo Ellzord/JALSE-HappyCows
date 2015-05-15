@@ -1,11 +1,11 @@
 ## HappyCows
 HappyCows is a [JALSE](https://github.com/Ellzord/JALSE) example project. It is a small simulation of cows in a field that randomly move and eat grass (which grows back over time).
 
-### Building and running
-1. Build using **Gradle** ```./gradlew build``` (see [Building Java Projects with Gradle](https://spring.io/guides/gs/gradle/#_build_your_project_with_gradle_wrapper))
-2. Run using **Gradle** Application plugin ```./gradle run``` (See [The Application Plugin](http://gradle.org/docs/current/userguide/application_plugin.html))
+### Building and running with Gradle
+1. Build using ```./gradlew build``` (see [Building Java Projects with Gradle](https://spring.io/guides/gs/gradle/#_build_your_project_with_gradle_wrapper))
+2. Run using ```./gradle run``` (See [The Application Plugin](http://gradle.org/docs/current/userguide/application_plugin.html))
 
-Optionally you can also create an **Eclipse** project using **Gradle** ```./gradlew eclipse``` (see [The Eclipse Plugins](http://gradle.org/docs/current/userguide/eclipse_plugin.html)).
+Optionally you can also create an **Eclipse** project using ```./gradlew eclipse``` (see [The Eclipse Plugins](http://gradle.org/docs/current/userguide/eclipse_plugin.html)).
 
 ### Simulation life-cycle
 1. [Grass](https://github.com/Ellzord/JALSE-HappyCows/blob/master/src/main/java/happycows/entities/Grass.java) seeds are sown.
