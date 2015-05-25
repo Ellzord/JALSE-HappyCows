@@ -8,9 +8,9 @@ import java.awt.Point;
 
 public interface Grass extends Entity {
 
-    @GetAttribute("position")
+    @GetAttribute
     Point getPosition();
 
-    @SetAttribute("position")
+    @SetAttribute
     void setPosition(Point p);
 }

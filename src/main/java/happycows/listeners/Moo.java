@@ -1,7 +1,7 @@
 package happycows.listeners;
 
-import jalse.listeners.AttributeListener;
-import jalse.listeners.AttributeEvent;
+import jalse.attributes.AttributeEvent;
+import jalse.attributes.AttributeListener;
 
 import java.awt.Point;
 

@@ -18,9 +18,9 @@ public class CowsEatGrass implements Action<JALSE> {
 
 	// Only process cows
 	jalse.streamEntitiesOfType(Cow.class).forEach(c -> {
-	    final Point pos = c.getPosition();
 	    // Eat grass at the same position
-		jalse.streamEntitiesOfType(Grass.class).filter(g -> pos.equals(g.getPosition())).forEach(Entity::kill);
-	    });
+	    final Point pos = c.getPosition();
+	    jalse.streamEntitiesOfType(Grass.class).filter(g -> pos.equals(g.getPosition())).forEach(Entity::kill);
+	});
     }
 }

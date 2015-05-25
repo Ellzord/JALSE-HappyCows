@@ -4,8 +4,8 @@ import happycows.actions.SproutGrass;
 import happycows.entities.Grass;
 import jalse.JALSE;
 import jalse.entities.Entity;
-import jalse.listeners.EntityListener;
-import jalse.listeners.EntityEvent;
+import jalse.entities.EntityEvent;
+import jalse.entities.EntityListener;
 
 import java.util.concurrent.TimeUnit;
 
