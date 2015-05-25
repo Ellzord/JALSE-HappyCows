@@ -1,4 +1,4 @@
-package happycows.listeners;
+package happycows.attributes;
 
 import jalse.attributes.AttributeEvent;
 import jalse.attributes.AttributeListener;

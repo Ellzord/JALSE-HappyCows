@@ -1,7 +1,6 @@
-package happycows.listeners;
+package happycows.entities;
 
 import happycows.actions.SproutGrass;
-import happycows.entities.Grass;
 import jalse.JALSE;
 import jalse.entities.Entity;
 import jalse.entities.EntityEvent;
