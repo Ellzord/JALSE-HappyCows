@@ -1,12 +1,12 @@
 package happycows.entities;
 
+import java.util.concurrent.TimeUnit;
+
 import happycows.actions.SproutGrass;
 import jalse.JALSE;
 import jalse.entities.Entity;
 import jalse.entities.EntityEvent;
 import jalse.entities.EntityListener;
-
-import java.util.concurrent.TimeUnit;
 
 public class GrowGrass implements EntityListener {
 

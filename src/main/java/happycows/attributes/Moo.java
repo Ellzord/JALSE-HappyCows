@@ -1,9 +1,9 @@
 package happycows.attributes;
 
+import java.awt.Point;
+
 import jalse.attributes.AttributeEvent;
 import jalse.attributes.AttributeListener;
-
-import java.awt.Point;
 
 public class Moo implements AttributeListener<Point> {
 

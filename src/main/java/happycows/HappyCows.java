@@ -1,21 +1,22 @@
 package happycows;
 
-import static jalse.actions.MultiActionBuilder.buildChain;
+import static jalse.actions.MultiAction.buildChain;
 import static jalse.attributes.Attributes.newNamedTypeOf;
+
+import java.awt.Point;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+
 import happycows.actions.CowsEatGrass;
 import happycows.actions.MoveCows;
 import happycows.actions.SproutGrass;
 import happycows.attributes.Moo;
 import happycows.entities.Cow;
 import happycows.entities.GrowGrass;
+import jalse.DefaultJALSE;
 import jalse.JALSE;
-import jalse.JALSEBuilder;
 import jalse.attributes.NamedAttributeType;
-
-import java.awt.Point;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
 
 public class HappyCows {
 
@@ -29,7 +30,7 @@ public class HappyCows {
 
     public static void main(final String[] args) throws InterruptedException {
 	// Create a single threaded parent container.
-	final JALSE jalse = JALSEBuilder.buildSingleThreadedJALSE();
+	final JALSE jalse = new DefaultJALSE.Builder().setThreadPoolEngine().setSingleThread().build();
 
 	System.out.println(String.format("Creating a field [%dx%d]", WIDTH, HEIGHT));
 

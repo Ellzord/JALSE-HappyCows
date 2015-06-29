@@ -1,10 +1,10 @@
 package happycows.entities;
 
+import java.awt.Point;
+
 import jalse.entities.Entity;
 import jalse.entities.annotations.GetAttribute;
 import jalse.entities.annotations.SetAttribute;
-
-import java.awt.Point;
 
 public interface Grass extends Entity {
 

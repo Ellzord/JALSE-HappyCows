@@ -1,13 +1,13 @@
 package happycows.actions;
 
+import java.awt.Point;
+
 import happycows.entities.Cow;
 import happycows.entities.Grass;
 import jalse.JALSE;
 import jalse.actions.Action;
 import jalse.actions.ActionContext;
 import jalse.entities.Entity;
-
-import java.awt.Point;
 
 public class CowsEatGrass implements Action<JALSE> {
 

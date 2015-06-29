@@ -1,14 +1,15 @@
 package happycows.actions;
 
 import static jalse.attributes.Attributes.newTypeOf;
+
+import java.awt.Point;
+import java.util.concurrent.ThreadLocalRandom;
+
 import happycows.HappyCows;
 import happycows.entities.Cow;
 import jalse.JALSE;
 import jalse.actions.Action;
 import jalse.actions.ActionContext;
-
-import java.awt.Point;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class MoveCows implements Action<JALSE> {
 
@@ -33,27 +34,27 @@ public class MoveCows implements Action<JALSE> {
 	    final Point newPos = new Point();
 
 	    // Calculate the new position for a random direction
-		switch (Direction.random()) {
-		case UP:
-		    newPos.setLocation(oldPos.getX(), Math.max(0, oldPos.getY() - 1));
-		    break;
-		case DOWN:
-		    newPos.setLocation(oldPos.getX(), Math.min(HappyCows.HEIGHT, oldPos.getY() + 1));
-		    break;
-		case RIGHT:
-		    newPos.setLocation(Math.min(HappyCows.WIDTH, oldPos.getY() + 1), oldPos.getY());
-		    break;
-		case LEFT:
-		    newPos.setLocation(Math.max(0, oldPos.getX() - 1), oldPos.getY());
-		    break;
-		}
+	    switch (Direction.random()) {
+	    case UP:
+		newPos.setLocation(oldPos.getX(), Math.max(0, oldPos.getY() - 1));
+		break;
+	    case DOWN:
+		newPos.setLocation(oldPos.getX(), Math.min(HappyCows.HEIGHT, oldPos.getY() + 1));
+		break;
+	    case RIGHT:
+		newPos.setLocation(Math.min(HappyCows.WIDTH, oldPos.getY() + 1), oldPos.getY());
+		break;
+	    case LEFT:
+		newPos.setLocation(Math.max(0, oldPos.getX() - 1), oldPos.getY());
+		break;
+	    }
 
-		// If the position could be moved
-		if (!oldPos.equals(newPos)) {
-		    oldPos.setLocation(newPos);
-		    // Signal the internal state of the position has changed
-		    c.fireAttributeChanged("position", newTypeOf(Point.class));
-		}
-	    });
+	    // If the position could be moved
+	    if (!oldPos.equals(newPos)) {
+		oldPos.setLocation(newPos);
+		// Signal the internal state of the position has changed
+		c.fireAttributeChanged("position", newTypeOf(Point.class));
+	    }
+	});
     }
 }
