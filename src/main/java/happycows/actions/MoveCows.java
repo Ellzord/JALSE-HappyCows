@@ -41,8 +41,8 @@ public class MoveCows implements Action<JALSE> {
 	    case DOWN:
 		newPos.setLocation(oldPos.getX(), Math.min(HappyCows.HEIGHT, oldPos.getY() + 1));
 		break;
-	    case RIGHT:
-		newPos.setLocation(Math.min(HappyCows.WIDTH, oldPos.getY() + 1), oldPos.getY());
+	    case RIGHT:	    	
+		newPos.setLocation(Math.min(HappyCows.WIDTH, oldPos.getX() + 1), oldPos.getY());		
 		break;
 	    case LEFT:
 		newPos.setLocation(Math.max(0, oldPos.getX() - 1), oldPos.getY());
